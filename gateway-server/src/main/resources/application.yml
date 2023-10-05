@@ -34,6 +34,6 @@ springdoc:
     path: /swagger-ui.html
     config-url: /v3/api-docs/swagger-config
     urls:
-      - url: /v3/api-docs
-        name: API Gateway Service
-        displayName: API Gateway Service
+      - url: /customer-service/docs
+        name: Customer Service
+        displayName: Customer Service

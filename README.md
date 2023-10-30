@@ -38,3 +38,23 @@ OpenAPIDoc (Swagger)
 ![Pasted image 20231030095944.png](doc%2FPasted%20image%2020231030095944.png)
 
 ![Pasted image 20231030100001.png](doc%2FPasted%20image%2020231030100001.png)
+
+Done:
+
+- [x] Eureka service
+- [x] Swagger configured in gateway
+- [x] Wallet service
+- [x] Transfer service (check if source/destination exists, check if source has balance)
+- [x] Gateway service
+- [x] Swagger configured in gateway (all swagger configs are in
+  gateway: http://localhost:8080/webjars/swagger-ui/index.html)
+- [x] Exception handling (core - GlobalExceptionHandler)
+- [x] DTOs Validation
+- [x] Throwable Client exceptions (Http interfaces)
+
+TODO:
+
+- [ ] Config service (move all application-dev to config service)
+- [ ] Transfer service (update balance when transfer)
+- [ ] Wallet service (check if client exists)
+- [ ] Frontend

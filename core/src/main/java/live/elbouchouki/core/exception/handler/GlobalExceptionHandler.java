@@ -123,6 +123,23 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 .body(e.getException());
     }
 
+
+    @ExceptionHandler(InsufficientBalanceException.class)
+    public ResponseEntity<ExceptionResponse> handleApiClientException(InsufficientBalanceException e) {
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(
+                        ExceptionResponse.builder()
+                                .code(HttpStatus.BAD_REQUEST.value())
+                                .status(HttpStatus.BAD_REQUEST.name())
+                                .message(
+                                        "Insufficient balance"
+                                )
+                                .build()
+                );
+    }
+
+
     @ExceptionHandler({
             InternalErrorException.class,
             NullPointerException.class

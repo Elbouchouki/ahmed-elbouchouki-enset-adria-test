@@ -3,13 +3,14 @@ package live.elbouchouki.transferservice.service;
 import live.elbouchouki.core.dto.shared.PagingResponse;
 import live.elbouchouki.core.dto.transfer.TransferCreateRequest;
 import live.elbouchouki.core.dto.transfer.TransferResponse;
+import live.elbouchouki.core.dto.transfer.TransferUpdateRequest;
 import live.elbouchouki.core.exception.AlreadyExistsException;
 import live.elbouchouki.core.exception.NotFoundException;
 
 public interface TransferService {
     TransferResponse create(TransferCreateRequest request) throws AlreadyExistsException;
 
-    TransferResponse update(String id, TransferCreateRequest request) throws NotFoundException, AlreadyExistsException;
+    TransferResponse update(String id, TransferUpdateRequest request) throws NotFoundException, AlreadyExistsException;
 
     TransferResponse findById(String id) throws NotFoundException;
 

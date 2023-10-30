@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import live.elbouchouki.core.dto.shared.PagingResponse;
 import live.elbouchouki.core.dto.transfer.TransferCreateRequest;
 import live.elbouchouki.core.dto.transfer.TransferResponse;
+import live.elbouchouki.core.dto.transfer.TransferUpdateRequest;
 import live.elbouchouki.core.exception.AlreadyExistsException;
 import live.elbouchouki.transferservice.service.TransferService;
 import lombok.RequiredArgsConstructor;
@@ -69,7 +70,7 @@ public class TransferController {
     @PatchMapping("/transfer/{id}")
     public ResponseEntity<TransferResponse> update(
             @PathVariable("id") String id,
-            @Valid @RequestBody TransferCreateRequest request
+            @Valid @RequestBody TransferUpdateRequest request
     ) throws AlreadyExistsException {
         return ResponseEntity.ok(
                 transferService.update(id, request)

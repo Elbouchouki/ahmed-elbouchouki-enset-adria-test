@@ -3,6 +3,7 @@ package live.elbouchouki.transferservice.mapper;
 import live.elbouchouki.core.dto.shared.PagingResponse;
 import live.elbouchouki.core.dto.transfer.TransferCreateRequest;
 import live.elbouchouki.core.dto.transfer.TransferResponse;
+import live.elbouchouki.core.dto.transfer.TransferUpdateRequest;
 import live.elbouchouki.transferservice.model.Transfer;
 import org.mapstruct.*;
 import org.springframework.data.domain.Page;
@@ -25,7 +26,7 @@ public interface TransferMapper {
     List<TransferResponse> toResponseList(List<Transfer> transferList);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updateModel(TransferCreateRequest request, @MappingTarget Transfer transfer);
+    void updateModel(TransferUpdateRequest request, @MappingTarget Transfer transfer);
 
     @Mapping(target = "page", expression = "java(model.getNumber())")
     @Mapping(target = "size", expression = "java(model.getSize())")

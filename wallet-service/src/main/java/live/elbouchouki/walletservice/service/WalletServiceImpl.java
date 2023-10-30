@@ -1,9 +1,10 @@
 package live.elbouchouki.walletservice.service;
 
 import live.elbouchouki.core.constant.CoreConstants;
+import live.elbouchouki.core.dto.shared.PagingResponse;
 import live.elbouchouki.core.dto.wallet.WalletCreateRequest;
 import live.elbouchouki.core.dto.wallet.WalletResponse;
-import live.elbouchouki.core.dto.shared.PagingResponse;
+import live.elbouchouki.core.dto.wallet.WalletUpdateRequest;
 import live.elbouchouki.core.exception.AlreadyExistsException;
 import live.elbouchouki.core.exception.NotFoundException;
 import live.elbouchouki.walletservice.mapper.WalletMapper;
@@ -26,7 +27,8 @@ public class WalletServiceImpl implements WalletService {
     @Override
     public WalletResponse create(WalletCreateRequest request) throws AlreadyExistsException {
 
-
+        // TODO: Check if client exists
+        // TODO: Must call client-microservice
 
         return walletMapper.toResponse(
                 walletRepository.save(
@@ -36,7 +38,7 @@ public class WalletServiceImpl implements WalletService {
     }
 
     @Override
-    public WalletResponse update(String id, WalletCreateRequest request) throws NotFoundException, AlreadyExistsException {
+    public WalletResponse update(String id, WalletUpdateRequest request) throws NotFoundException, AlreadyExistsException {
         Wallet wallet = walletRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException(
                         CoreConstants.BusinessExceptionMessage.NOT_FOUND,

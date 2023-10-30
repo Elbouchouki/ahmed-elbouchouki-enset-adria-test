@@ -1,9 +1,10 @@
 package live.elbouchouki.walletservice.controller;
 
 import jakarta.validation.Valid;
+import live.elbouchouki.core.dto.shared.PagingResponse;
 import live.elbouchouki.core.dto.wallet.WalletCreateRequest;
 import live.elbouchouki.core.dto.wallet.WalletResponse;
-import live.elbouchouki.core.dto.shared.PagingResponse;
+import live.elbouchouki.core.dto.wallet.WalletUpdateRequest;
 import live.elbouchouki.core.exception.AlreadyExistsException;
 import live.elbouchouki.walletservice.service.WalletService;
 import lombok.RequiredArgsConstructor;
@@ -69,7 +70,7 @@ public class WalletController {
     @PatchMapping("/wallet/{id}")
     public ResponseEntity<WalletResponse> update(
             @PathVariable("id") String id,
-            @Valid @RequestBody WalletCreateRequest request
+            @Valid @RequestBody WalletUpdateRequest request
     ) throws AlreadyExistsException {
         return ResponseEntity.ok(
                 walletService.update(id, request)

@@ -33,14 +33,14 @@ public class GatewayServer {
                                 .or()
                                 .path("/transfer-service/docs")
                                 .filters(f -> f.rewritePath("/transfer-service/docs", "/v3/api-docs"))
-                                .uri("lb://customer-service")
+                                .uri("lb://transfer-service")
                 )
                 .route(
                         r -> r.path("/api/wallets/**")
                                 .or()
                                 .path("/wallet-service/docs")
                                 .filters(f -> f.rewritePath("/wallet-service/docs", "/v3/api-docs"))
-                                .uri("lb://inventory-service")
+                                .uri("lb://wallet-service")
                 )
                 .build();
     }

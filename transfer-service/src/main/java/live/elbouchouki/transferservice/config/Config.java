@@ -1,4 +1,4 @@
-package live.elbouchouki.billingservice.config;
+package live.elbouchouki.transferservice.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;

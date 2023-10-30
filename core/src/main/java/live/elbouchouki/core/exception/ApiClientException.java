@@ -1,7 +1,7 @@
-package ma.enset.utilisateur.exception;
+package live.elbouchouki.core.exception;
 
+import live.elbouchouki.core.exception.dto.ExceptionResponse;
 import lombok.Getter;
-import ma.enset.utilisateur.exception.handler.dto.ExceptionResponse;
 
 @Getter
 public class ApiClientException extends RuntimeException {

@@ -10,8 +10,6 @@ import live.elbouchouki.transferservice.mapper.TransferMapper;
 import live.elbouchouki.transferservice.model.Transfer;
 import live.elbouchouki.transferservice.repository.TransferRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
@@ -22,8 +20,8 @@ public class TransferServiceImpl implements TransferService {
     private final String ELEMENT_NAME = "Transfer";
     private final String ELEMENT_ID = "id";
 
-    private final TransferRepository customerRepository;
-    private final TransferMapper customerMapper;
+    private final TransferRepository transferRepository;
+    private final TransferMapper transferMapper;
 
     @Override
     public TransferResponse create(TransferCreateRequest request) throws AlreadyExistsException {
@@ -36,33 +34,33 @@ public class TransferServiceImpl implements TransferService {
 
         // check if destination exists
 
-        return customerMapper.toResponse(
-                customerRepository.save(
-                        customerMapper.toModel(request)
+        return transferMapper.toResponse(
+                transferRepository.save(
+                        transferMapper.toModel(request)
                 )
         );
     }
 
     @Override
     public TransferResponse update(String id, TransferCreateRequest request) throws NotFoundException, AlreadyExistsException {
-        Transfer customer = customerRepository.findById(id)
+        Transfer transfer = transferRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException(
                         CoreConstants.BusinessExceptionMessage.NOT_FOUND,
                         new Object[]{ELEMENT_NAME, ELEMENT_ID, id,},
                         null
                 ));
 
-        customerMapper.updateModel(request, customer);
+        transferMapper.updateModel(request, transfer);
 
-        return customerMapper.toResponse(
-                customerRepository.save(customer)
+        return transferMapper.toResponse(
+                transferRepository.save(transfer)
         );
     }
 
     @Override
     public TransferResponse findById(String id) throws NotFoundException {
-        return customerMapper.toResponse(
-                customerRepository.findById(id)
+        return transferMapper.toResponse(
+                transferRepository.findById(id)
                         .orElseThrow(() -> new NotFoundException(
                                 CoreConstants.BusinessExceptionMessage.NOT_FOUND,
                                 new Object[]{ELEMENT_NAME, ELEMENT_ID, id,},
@@ -73,8 +71,8 @@ public class TransferServiceImpl implements TransferService {
 
     @Override
     public PagingResponse<TransferResponse> findAll(int page, int size) {
-        return customerMapper.toPagingResponse(
-                customerRepository.findAll(
+        return transferMapper.toPagingResponse(
+                transferRepository.findAll(
                         PageRequest.of(page, size)
                 )
         );
@@ -82,22 +80,18 @@ public class TransferServiceImpl implements TransferService {
 
     @Override
     public boolean existsById(String id) {
-        return customerRepository.existsById(id);
+        return transferRepository.existsById(id);
     }
 
     @Override
     public void deleteById(String id) throws NotFoundException {
-        if (!customerRepository.existsById(id))
+        if (!transferRepository.existsById(id))
             throw new NotFoundException(
                     CoreConstants.BusinessExceptionMessage.NOT_FOUND,
                     new Object[]{ELEMENT_NAME, ELEMENT_ID, id,},
                     null
             );
-        customerRepository.deleteById(id);
+        transferRepository.deleteById(id);
     }
 
-
-    private static final ExampleMatcher SEARCH_MATCH_ALL = ExampleMatcher.matchingAll()
-            .withIgnoreCase()
-            .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
 }

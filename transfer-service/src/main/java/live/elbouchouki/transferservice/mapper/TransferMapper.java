@@ -1,8 +1,8 @@
 package live.elbouchouki.transferservice.mapper;
 
+import live.elbouchouki.core.dto.shared.PagingResponse;
 import live.elbouchouki.core.dto.transfer.TransferCreateRequest;
 import live.elbouchouki.core.dto.transfer.TransferResponse;
-import live.elbouchouki.core.dto.shared.PagingResponse;
 import live.elbouchouki.transferservice.model.Transfer;
 import org.mapstruct.*;
 import org.springframework.data.domain.Page;
@@ -18,6 +18,8 @@ public interface TransferMapper {
 
     List<Transfer> toModelList(List<TransferCreateRequest> requestList);
 
+    @Mapping(target = "source", ignore = true)
+    @Mapping(target = "destination", ignore = true)
     TransferResponse toResponse(Transfer transfer);
 
     List<TransferResponse> toResponseList(List<Transfer> transferList);

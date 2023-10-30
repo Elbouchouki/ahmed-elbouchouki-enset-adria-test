@@ -1,4 +1,4 @@
-package live.elbouchouki.core.dto.wallet.customer;
+package live.elbouchouki.core.dto.wallet;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

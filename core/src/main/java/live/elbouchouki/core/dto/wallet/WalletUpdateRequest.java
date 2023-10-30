@@ -1,4 +1,4 @@
-package live.elbouchouki.core.dto.wallet.customer;
+package live.elbouchouki.core.dto.wallet;
 
 public record WalletUpdateRequest(
         String currency,

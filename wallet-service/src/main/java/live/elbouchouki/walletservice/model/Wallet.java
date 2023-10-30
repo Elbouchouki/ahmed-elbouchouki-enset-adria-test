@@ -1,4 +1,4 @@
-package live.elbouchouki.billingservice.model;
+package live.elbouchouki.walletservice.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

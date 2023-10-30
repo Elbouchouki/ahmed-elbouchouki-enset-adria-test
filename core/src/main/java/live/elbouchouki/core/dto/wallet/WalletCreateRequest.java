@@ -1,4 +1,4 @@
-package live.elbouchouki.core.dto.wallet.customer;
+package live.elbouchouki.core.dto.wallet;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

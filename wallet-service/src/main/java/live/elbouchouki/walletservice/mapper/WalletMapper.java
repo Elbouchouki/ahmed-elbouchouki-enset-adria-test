@@ -1,9 +1,9 @@
-package live.elbouchouki.billingservice.mapper;
+package live.elbouchouki.walletservice.mapper;
 
-import live.elbouchouki.core.dto.customer.CustomerCreateRequest;
-import live.elbouchouki.core.dto.customer.CustomerResponse;
 import live.elbouchouki.core.dto.shared.PagingResponse;
-import live.elbouchouki.customerservice.model.Customer;
+import live.elbouchouki.core.dto.wallet.WalletCreateRequest;
+import live.elbouchouki.core.dto.wallet.WalletResponse;
+import live.elbouchouki.walletservice.model.Wallet;
 import org.mapstruct.*;
 import org.springframework.data.domain.Page;
 
@@ -13,22 +13,22 @@ import java.util.List;
         componentModel = MappingConstants.ComponentModel.SPRING,
         injectionStrategy = InjectionStrategy.CONSTRUCTOR
 )
-public interface CustomerMapper {
-    Customer toModel(CustomerCreateRequest request);
+public interface WalletMapper {
+    Wallet toModel(WalletCreateRequest request);
 
-    List<Customer> toModelList(List<CustomerCreateRequest> requestList);
+    List<Wallet> toModelList(List<WalletCreateRequest> requestList);
 
-    CustomerResponse toResponse(Customer customer);
+    WalletResponse toResponse(Wallet customer);
 
-    List<CustomerResponse> toResponseList(List<Customer> customerList);
+    List<WalletResponse> toResponseList(List<Wallet> customerList);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updateModel(CustomerCreateRequest request, @MappingTarget Customer customer);
+    void updateModel(WalletCreateRequest request, @MappingTarget Wallet customer);
 
     @Mapping(target = "page", expression = "java(model.getNumber())")
     @Mapping(target = "size", expression = "java(model.getSize())")
     @Mapping(target = "totalPages", expression = "java(model.getTotalPages())")
     @Mapping(target = "totalElements", expression = "java(model.getNumberOfElements())")
     @Mapping(target = "records", expression = "java(toResponseList(model.getContent()))")
-    PagingResponse<CustomerResponse> toPagingResponse(Page<Customer> model);
+    PagingResponse<WalletResponse> toPagingResponse(Page<Wallet> model);
 }

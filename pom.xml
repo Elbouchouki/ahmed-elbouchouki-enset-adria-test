@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>live.elbouchouki</groupId>
-    <artifactId>microservices-billing-management</artifactId>
+    <artifactId>enset-adria-test</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>microservices-billing-management</name>
+    <name>enset-adria-test</name>
 
     <developers>
         <developer>
@@ -18,12 +18,11 @@
     </developers>
 
     <modules>
-        <module>eureka-server</module>
-        <module>gateway-server</module>
+        <module>discovery-service</module>
+        <module>gateway-service</module>
         <module>core</module>
-        <module>customer-service</module>
-        <module>billing-service</module>
-        <module>inventory-service</module>
+        <module>wallet-service</module>
+        <module>transfer-service</module>
     </modules>
 
     <properties>
